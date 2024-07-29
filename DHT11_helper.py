@@ -1,6 +1,8 @@
 
 import Adafruit_DHT
 
+DATA_PIN = 23
+
 class dht11_helper:
 
    class DeviceException(Exception):
@@ -19,7 +21,7 @@ class dht11_helper:
 
       # Try to grab a sensor reading.  Use the read_retry method which will retry up
       # to 15 times to get a sensor reading (waiting 2 seconds between each retry).
-      humidity, temp_c = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, 23)
+      humidity, temp_c = Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, DATA_PIN)
 
       # Note that sometimes you won't get a reading and
       # the results will be null (because Linux can't
