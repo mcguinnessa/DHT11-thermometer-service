@@ -1,0 +1,12 @@
+[Unit]
+Description=Provides and endpoint to get the current temperature from the DHT11 sensor
+After=network.target
+
+[Service]
+User=alex
+WorkingDirectory=/home/alex/scripts/DHT11-thermometer-service/
+ExecStart=/home/alex/scripts/DHT11-thermometer-service/.venv/bin/gunicorn -b 0.0.0.0:5001 -w 1 DHT11_service:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
