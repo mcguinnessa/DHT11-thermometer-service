@@ -14,21 +14,25 @@ H_INDEX = 2
 #
 ######################################################################
 def get_sensor_data(idx):
+   print("Received Call")
 
-    try:
-       rc =  {"value": dht11_helper.read_data()[idx]}
-    except dht11_helper.DeviceException as e:
-       print("Exception:" + str(e))
-       rc = {"error:": "Device Not Found"}
-#    except dht11_helper.DeviceFormatException as e:
-#       print("Exception:" + str(e))
-#       rc = {"error:": "Unexpected Format from device" }
-    except dht11_helper.DeviceTimeoutException as e:
-       print("Exception:" + str(e))
-       rc = {"error:": "Timed out reading from device" }
+   try:
+      rc =  {"value": dht11_helper.read_data()[idx]}
+   except dht11_helper.DeviceException as e:
+      print("Exception:" + str(e))
+      rc = {"error:": "Device Not Found"}
+#   except dht11_helper.DeviceFormatException as e:
+#      print("Exception:" + str(e))
+#      rc = {"error:": "Unexpected Format from device" }
+   except dht11_helper.DeviceTimeoutException as e:
+      print("Exception:" + str(e))
+      rc = {"error:": "Timed out reading from device" }
+   except Exception as e:
+      print("Exception:" + str(e))
+      rc = {"error:": "Unknown Exception" }
 
-    print("T:" + str(rc))
-    return jsonify(rc)
+   print("T:" + str(rc))
+   return jsonify(rc)
 
 
 ######################################################################

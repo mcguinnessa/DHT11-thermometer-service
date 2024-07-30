@@ -17,6 +17,8 @@ sudo systemctl start DHT11-thermometer
 sudo systemctl enable DHT11-thermometer
 sudo systemctl status DHT11-thermometer
 
+Default PIN is 23, but can be changed by altering DATA_PIN at the top of the script
+
 Currently listens on port 5001, can be changed in the service file
 
 Supported Endpoints
